@@ -1,0 +1,46 @@
+.terminal {
+  background: #000;
+  display: table;
+  table-layout: fixed;
+  font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+
+.terminal > * {
+  display: table-cell;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.terminal > *:nth-child(1) {
+  width: 60px;
+  padding: 20px;
+}
+
+.terminal pre {
+  width: 100%;
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+  font-weight: 400;
+  overflow: hidden;
+  background: transparent;
+  height: 235px;
+  padding: 0;
+  margin: 0;
+  font-size: 15px;
+  color: #fff;
+  display: block;
+  border-radius: 4px;
+  line-height: 1.5;
+}
+
+.terminal > *:nth-child(2) {
+  padding: 20px;
+  border-left: 2px solid rgba(255,255,255,0.2);
+}
+
+.terminal > *:nth-child(2) pre {
+  overflow: auto;
+}
+
+.terminal span {
+  color: #c2974a;
+}
