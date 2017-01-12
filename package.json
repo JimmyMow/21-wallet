@@ -151,8 +151,10 @@
     "webpack-validator": "^2.2.11"
   },
   "dependencies": {
+    "bip39": "^2.2.0",
     "electron-debug": "^1.1.0",
     "font-awesome": "^4.7.0",
+    "python-shell": "^0.4.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
     "react-redux": "^4.4.6",

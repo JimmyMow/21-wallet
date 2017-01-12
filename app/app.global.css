@@ -1,13 +1,23 @@
+@import "./styles/reset.css";
+@import "./styles/_variables.css";
 @import "~font-awesome/css/font-awesome.css";
 @import "./styles/terminal.css";
+
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), local('Roboto-Light'), url(http://fonts.gstatic.com/s/roboto/v15/Fl4y0QdOxyyTHEGMXX8kcaCWcynf_cDxXwCLxiixG1c.ttf) format('truetype');
+}
 
 body {
   position: relative;
   color: white;
   height: 100vh;
-  font-family: Arial, Helvetica, Helvetica Neue, serif;
+  font-family: 'Roboto';
   overflow-y: hidden;
   margin: 0;
   padding: 0;
-  background: pink;
+  // background: linear-gradient(to bottom,rgb(42,134,204) 0%,rgb(14,73,141) 100%);
+  background: var(--background);
 }

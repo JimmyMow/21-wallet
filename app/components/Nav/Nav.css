@@ -1,0 +1,32 @@
+.nav {
+  height: 100%;
+  background: #eee;
+  background-image: linear-gradient(to bottom,#d7d7d7 0%,#eeeeee 116px);
+  color: #707070;
+  padding: 50px 0;
+  text-align: center;
+}
+
+.header {
+  font-size: 32px;
+  color: #555;
+}
+
+.header span {
+  opacity: 0.7;
+}
+
+.links {
+  margin: 50px 0;
+}
+
+.link {
+  padding: 20px 0;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.link.active {
+  color: var(--white);
+  background: var(--background);
+}
