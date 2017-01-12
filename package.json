@@ -137,6 +137,7 @@
     "json-loader": "^0.5.4",
     "minimist": "^1.2.0",
     "mocha": "^3.2.0",
+    "postcss-loader": "^1.2.2",
     "react-addons-test-utils": "^15.4.1",
     "redux-logger": "^2.7.4",
     "sinon": "^1.17.6",
@@ -151,9 +152,9 @@
     "webpack-validator": "^2.2.11"
   },
   "dependencies": {
-    "bip39": "^2.2.0",
     "electron-debug": "^1.1.0",
     "font-awesome": "^4.7.0",
+    "node-sass": "^4.2.0",
     "python-shell": "^0.4.0",
     "react": "^15.4.1",
     "react-dom": "^15.4.1",
@@ -162,6 +163,7 @@
     "react-router-redux": "^4.0.7",
     "redux": "^3.6.0",
     "redux-thunk": "^2.1.0",
+    "sass-loader": "^4.1.1",
     "source-map-support": "^0.4.6"
   },
   "devEngines": {

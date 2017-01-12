@@ -1,7 +1,7 @@
-@import "./styles/reset.css";
-@import "./styles/_variables.css";
-@import "~font-awesome/css/font-awesome.css";
-@import "./styles/terminal.css";
+@import 'reset.scss';
+@import 'variables.scss';
+// @import '~font-awesome/css/font-awesome.css';
+@import 'terminal.scss';
 
 @font-face {
   font-family: 'Roboto';

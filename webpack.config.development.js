@@ -1,83 +1,101 @@
-/* eslint-disable max-len */
-/**
- * Build config for development process that uses Hot-Module-Replacement
- * https://webpack.github.io/docs/hot-module-replacement-with-webpack.html
- */
-
+/* eslint max-len: 0 */
 import webpack from 'webpack';
-import validate from 'webpack-validator';
-import merge from 'webpack-merge';
-import formatter from 'eslint-formatter-pretty';
+import autoprefixer from 'autoprefixer';
 import baseConfig from './webpack.config.base';
 
 const port = process.env.PORT || 3000;
 
-export default validate(merge(baseConfig, {
+const cssModulesLoader = [
+  'css?sourceMap&-minimize',
+  'modules',
+  'importLoaders=1',
+  'localIdentName=[name]__[local]___[hash:base64:5]'
+].join('&')
+
+const config = {
+  ...baseConfig,
+
   debug: true,
 
-  devtool: 'inline-source-map',
+  devtool: 'eval',
+  // devtool: 'cheap-module-eval-source-map',
 
   entry: [
     `webpack-hot-middleware/client?path=http://localhost:${port}/__webpack_hmr`,
-    'babel-polyfill',
     './app/index'
   ],
 
   output: {
+    ...baseConfig.output,
     publicPath: `http://localhost:${port}/dist/`
   },
 
   module: {
-    // preLoaders: [
-    //   {
-    //     test: /\.js$/,
-    //     loader: 'eslint-loader',
-    //     exclude: /node_modules/
-    //   }
-    // ],
+    ...baseConfig.module,
     loaders: [
+      ...baseConfig.module.loaders,
+      // {
+      //   test: /\.scss$/,
+      //   loaders: [
+      //     'style-loader',
+      //     'css-loader?sourceMap',
+      //     'postcss-loader?sourceMap',
+      //     'sass-loader?sourceMap'
+      //   ]
+      // },
       {
-        test: /\.global\.css$/,
+        test: /^((?!\.global).)*\.scss$/,
         loaders: [
-          'style-loader',
-          'css-loader?sourceMap'
+          'style',
+          cssModulesLoader,
+          'postcss',
+          'sass?sourceMap'
         ]
       },
-
       {
         test: /^((?!\.global).)*\.css$/,
         loaders: [
-          'style-loader',
-          'css-loader?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+          'style',
+          cssModulesLoader,
+          'postcss'
         ]
       },
-
-      { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
-      { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },
-      { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/octet-stream' },
-      { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file' },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=image/svg+xml' },
+      {
+        test: /\.(ttf|eot|svg|woff)/,
+        loader: 'file-loader'
+      }
     ]
   },
 
-  eslint: {
-    formatter
+  postcss: [
+    autoprefixer({ browsers: ['chrome >= 50'] })
+  ],
+
+  sassLoader: {
+    includePaths: [
+      './node_modules'
+    ]
+  },
+
+  resolve: {
+    ...baseConfig.resolve
   },
 
   plugins: [
-    // https://webpack.github.io/docs/hot-module-replacement-with-webpack.html
+    ...baseConfig.plugins,
     new webpack.HotModuleReplacementPlugin(),
-
-    // “If you are using the CLI, the webpack process will not exit with an error code by enabling this plugin.”
-    // https://github.com/webpack/docs/wiki/list-of-plugins#noerrorsplugin
     new webpack.NoErrorsPlugin(),
-
-    // NODE_ENV should be production so that modules do not perform certain development checks
-    new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('development')
-    })
+    new webpack.EnvironmentPlugin([
+      'NODE_ENV'
+    ])
   ],
 
-  // https://github.com/chentsulin/webpack-target-electron-renderer#how-this-module-works
+  externals: [
+    // put your node 3rd party libraries which can't be built with webpack here
+    // (mysql, mongodb, and so on..)
+  ],
+
   target: 'electron-renderer'
-}));
+};
+
+export default config;

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import styles from './Signup.css'
+import styles from './Signup.scss'
 
 
 export default class Signup extends Component {

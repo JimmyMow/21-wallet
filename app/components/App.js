@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import styles from './App.css'
+import styles from './App.scss'
 import Nav from './Nav'
 import { requestWallet } from '../reducers/auth'
 import { wallet } from '../api'

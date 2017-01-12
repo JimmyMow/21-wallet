@@ -1,6 +1,5 @@
 import { browserHistory } from 'react-router'
 import { auth } from '../api'
-import { mnemonicToSeedHex } from 'bip39'
 
 const initialState = {
   loading: false,
