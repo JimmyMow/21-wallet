@@ -1,4 +1,5 @@
 import React from 'react'
+import FontAwesome from 'react-fontawesome'
 import styles from './Nav.scss'
 
 const Nav = () => (
@@ -10,10 +11,10 @@ const Nav = () => (
 
     <ul className={styles.links}>
       <li className={`${styles.link} ${styles.active}`}>
-        <i className='fa fa-home' aria-hidden='true'></i>
+        <FontAwesome name='home' />
       </li>
       <li className={styles.link}>
-        <i className='fa fa-btc' aria-hidden='true'></i>
+        <FontAwesome name='btc' />
       </li>
     </ul>
   </div>

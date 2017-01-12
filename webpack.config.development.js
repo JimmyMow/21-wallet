@@ -44,6 +44,13 @@ const config = {
       //   ]
       // },
       {
+        test: /\.global\.css$/,
+        loaders: [
+          'style-loader',
+          'css-loader?sourceMap'
+        ]
+      },
+      {
         test: /^((?!\.global).)*\.scss$/,
         loaders: [
           'style',
