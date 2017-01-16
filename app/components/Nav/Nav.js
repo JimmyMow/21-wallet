@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome'
 import styles from './Nav.scss'
 
@@ -10,11 +11,15 @@ const Nav = () => (
     </h1>
 
     <ul className={styles.links}>
-      <li className={`${styles.link} ${styles.active}`}>
-        <FontAwesome name='home' />
+      <li className={`${styles.link}`}>
+        <Link to='/'>
+          <FontAwesome name='home' />
+        </Link>
       </li>
       <li className={styles.link}>
-        <FontAwesome name='btc' />
+        <Link to='/wallet'>
+          <FontAwesome name='btc' />
+        </Link>
       </li>
     </ul>
   </div>

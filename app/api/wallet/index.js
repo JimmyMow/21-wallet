@@ -6,9 +6,9 @@ export function fetch(args) {
     const scriptPath = `${path.dirname(process.mainModule.filename)}/api/wallet/`
     const options = {
       scriptPath,
+      args,
       mode: 'json',
-      pythonPath: '/usr/local/bin/python3',
-      args: args
+      pythonPath: '/usr/local/bin/python3'
     }
 
     PythonShell.run('main.py', options, (err, result) => {

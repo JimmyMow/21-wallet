@@ -3,13 +3,11 @@ import { Link } from 'react-router'
 import styles from './App.scss'
 import Nav from './Nav'
 import { requestWallet } from '../reducers/auth'
-import { wallet } from '../api'
 
 export default class App extends Component {
   componentWillMount() {
     const { requestWallet, router } = this.props
     requestWallet(router)
-    wallet(['address', 'confirmed', 'unconfirmed'])
   }
 
   render() {

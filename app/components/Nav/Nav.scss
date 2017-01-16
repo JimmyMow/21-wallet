@@ -1,7 +1,6 @@
 .nav {
   height: 100%;
-  background: #eee;
-  background-image: linear-gradient(to bottom,#d7d7d7 0%,#eeeeee 116px);
+  background: #F8F8FA;
   color: #707070;
   padding: 50px 0;
   text-align: center;
@@ -23,9 +22,12 @@
   padding: 20px 0;
   font-size: 30px;
   cursor: pointer;
-}
 
-.link.active {
-  color: var(--white);
-  background: var(--background);
+  &.active {
+    color: #fff;
+  }
+
+  a {
+    color: #707070;
+  }
 }

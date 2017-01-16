@@ -20,10 +20,7 @@ export function auth() {
 }
 
 export function wallet(args) {
-  let result = {}
-  for (let arg of args) {
-    fetch([arg])
-    .then(data => console.log('data: ', data))
-    .catch(error => console.log('error: ', error))
-  }
+  return fetch(args)
+  .then(data => data)
+  .catch(error => error)
 }

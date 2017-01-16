@@ -1,4 +1,8 @@
+import { wallet } from '../api'
+
 const initialState = {
+  fetching: false,
+  error: null,
   address: null,
   confirmed: null,
   unconfirmed: null
@@ -7,15 +11,62 @@ const initialState = {
 // ------------------------------------
 // Constants
 // ------------------------------------
+const REQUEST_WALLET = 'REQUEST_WALLET'
+const WALLET_SUCCESS = 'WALLET_SUCCESS'
+const WALLET_FAIL = 'WALLET_FAIL'
 
 // ------------------------------------
 // Actions
 // ------------------------------------
+export function requestWallet() {
+  return {
+    type: REQUEST_WALLET
+  }
+}
+
+export function walletSuccess(data) {
+  console.log('data: ',data)
+  return {
+    type: WALLET_SUCCESS,
+    data
+  }
+}
+
+export function walletFail() {
+  return {
+    type: WALLET_FAIL
+  }
+}
+
+export const fetchWallet = () => async (dispatch) => {
+  dispatch(requestWallet())
+  const data = await wallet(['address', 'confirmed', 'unconfirmed'])
+  dispatch(walletSuccess(Object.assign(...data)))
+}
 
 // ------------------------------------
 // Action Handlers
 // ------------------------------------
-const WALLET_ACTION_HANDLERS = {}
+const WALLET_ACTION_HANDLERS = {
+  [REQUEST_WALLET]: (state) => ({
+    ...state,
+    fetching: true,
+    error: null
+  }),
+  [WALLET_SUCCESS]: (state, action) => ({
+    ...state,
+    fetching: false,
+    error: null,
+    address: action.data.address,
+    confirmed: action.data.confirmed,
+    unconfirmed: action.data.unconfirmed
+  }),
+  [WALLET_FAIL]: (state) => ({
+    ...state,
+    fetching: false,
+    error: ':/'
+  })
+}
 
 // ------------------------------------
 // Reducer

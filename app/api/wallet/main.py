@@ -3,7 +3,6 @@ import sys
 import json
 from os.path import expanduser
 from two1.wallet import Two1Wallet
-from two1.commands.util.currency import Price
 
 class Wallet():
   def __init__(self):
@@ -12,7 +11,6 @@ class Wallet():
       self.two1Wallet = Two1Wallet.import_from_mnemonic(mnemonic=wallet_data['master_seed'])
 
   def address(self):
-    return self.two1Wallet.get_payout_address()
     return self.two1Wallet.get_payout_address()
 
   def confirmed(self):
@@ -25,7 +23,9 @@ class Wallet():
 wallet = None
 wallet = wallet or Wallet()
 
-method = getattr(wallet, sys.argv[1])
-print(json.dumps({ 'data': method() }))
+del sys.argv[0]
+for arg in sys.argv:
+  method = getattr(wallet, arg)
+  print(json.dumps({ arg: method() }))
 
 
