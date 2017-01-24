@@ -8,10 +8,11 @@ export default class App extends Component {
   componentWillMount() {
     const { requestWallet, router } = this.props
     requestWallet(router)
+    console.log('props: ', this.props.location.pathname)
   }
 
   render() {
-    const { auth: { authed, loading } } = this.props
+    const { auth: { authed, loading }, location: { pathname } } = this.props
     return (
       <div className={styles.container}>
         {
@@ -32,7 +33,7 @@ export default class App extends Component {
             authed ?
               <div>
                 <section className={styles.nav}>
-                  <Nav />
+                  <Nav pathname={pathname} />
                 </section>
                 <section className={styles.app}>
                   {this.props.children}

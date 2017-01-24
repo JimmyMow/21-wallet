@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import FontAwesome from 'react-fontawesome'
 import styles from './Nav.scss'
 
-const Nav = () => (
+const Nav = ({ pathname }) => (
   <div className={styles.nav}>
     <h1 className={styles.header}>
       <span>j</span>
@@ -15,11 +15,13 @@ const Nav = () => (
         <Link to='/'>
           <FontAwesome name='home' />
         </Link>
+        <div className={`${pathname === '/' ? styles.active : null} ${styles.border}`} />
       </li>
       <li className={styles.link}>
-        <Link to='/wallet'>
+        <Link to='wallet'>
           <FontAwesome name='btc' />
         </Link>
+        <div className={`${pathname === '/wallet' ? styles.active : null} ${styles.border}`} />
       </li>
     </ul>
   </div>

@@ -1,14 +1,15 @@
+@import '../../styles/variables.scss';
+
 .nav {
   height: 100%;
-  background: #F8F8FA;
-  color: #707070;
+  color: $white;
   padding: 50px 0;
   text-align: center;
+  border-right: 5px solid $white;
 }
 
 .header {
   font-size: 32px;
-  color: #555;
   span {
     opacity: 0.7;
   }
@@ -19,15 +20,39 @@
 }
 
 .link {
+  position: relative;
   padding: 20px 0;
+  margin: 20px 0;
   font-size: 30px;
   cursor: pointer;
 
-  &.active {
-    color: #fff;
+  &:hover {
+    .border {
+      width: 10px;
+    }
   }
 
   a {
-    color: #707070;
+    color: $white;
+  }
+}
+
+.border {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background: $white;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  -webkit-transition: width 0.2s;
+  -moz-transition: width 0.2s;
+  -ms-transition: width 0.2s;
+  -o-transition: width 0.2s;
+  transition: width 0.2s;
+
+  &.active {
+    width: 10px;
   }
 }
