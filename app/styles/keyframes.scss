@@ -1,0 +1,23 @@
+@keyframes fadeinOutD6 {
+  0% {
+      transform: rotate(0deg);
+  }
+  50% {
+      transform: rotate(6deg);
+  }
+  100% {
+      transform: rotate(0deg);
+  }
+}
+
+@keyframes fadeinOutD13 {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(13deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

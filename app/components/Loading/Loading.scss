@@ -1,48 +1,4 @@
-.container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-
-.nav, .app {
-  position: relative;
-  display: inline-block;
-  vertical-align: top;
-  height: 100vh;
-}
-
-.nav {
-  width: 15%;
-}
-
-.app {
-  width: 85%;
-}
-
-// loading
-@keyframes fadeinOutD6 {
-  0% {
-      transform: rotate(0deg);
-  }
-  50% {
-      transform: rotate(6deg);
-  }
-  100% {
-      transform: rotate(0deg);
-  }
-}
-
-@keyframes fadeinOutD13 {
-  0% {
-    transform: rotate(0deg);
-  }
-  50% {
-    transform: rotate(13deg);
-  }
-  100% {
-    transform: rotate(0deg);
-  }
-}
+@import '../../styles/keyframes';
 
 .net {
   position: absolute;
@@ -92,15 +48,4 @@
   background-size: 65%;
   animation-duration: 16s;
   animation-name: fadeinOutD13;
-}
-
-.content {
-  width: 560px;
-  position: absolute;
-  z-index: 99999;
-  left: 50%;
-  top: 50%;
-  margin: -6% 0 0 -280px;
-  color: #fff;
-  text-align: center;
 }

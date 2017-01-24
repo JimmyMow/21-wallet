@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router'
-import styles from './App.scss'
 import Nav from './Nav'
+import Loading from './Loading'
+import styles from './App.scss'
 import { requestWallet } from '../reducers/auth'
 
 export default class App extends Component {
@@ -17,18 +18,7 @@ export default class App extends Component {
       <div className={styles.container}>
         {
           loading ?
-            <div>
-              <div className={styles.content}>
-                <div>
-                  <i className='fa fa-spin fa-circle-o-notch fa-3x' aria-hidden='true'></i>
-                </div>
-              </div>
-              <div className={styles.net}>
-                <div className={styles.net1} />
-                <div className={styles.net2} />
-                <div className={styles.net3} />
-              </div>
-            </div>
+            <Loading />
           :
             authed ?
               <div>
