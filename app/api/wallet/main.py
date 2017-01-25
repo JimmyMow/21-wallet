@@ -19,6 +19,9 @@ class Wallet():
   def unconfirmed(self):
     return self.two1Wallet.unconfirmed_balance()
 
+  def history(self):
+    return self.two1Wallet.transaction_history()
+
 
 wallet = None
 wallet = wallet or Wallet()

@@ -49,3 +49,13 @@
   animation-duration: 16s;
   animation-name: fadeinOutD13;
 }
+
+.content {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: 50%;
+  font-size: 50px;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  animation-name: colorchange;
+}

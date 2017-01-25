@@ -1,3 +1,5 @@
+@import 'variables';
+
 @keyframes fadeinOutD6 {
   0% {
       transform: rotate(0deg);
@@ -20,4 +22,12 @@
   100% {
     transform: rotate(0deg);
   }
+}
+
+@keyframes colorchange {
+  0%   { color: $white; }
+  25%  { color: $gold; }
+  50%  { color: $white; }
+  75%  { color: $gold; }
+  100% { color: $white; }
 }

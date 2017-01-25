@@ -5,7 +5,8 @@ const initialState = {
   error: null,
   address: null,
   confirmed: null,
-  unconfirmed: null
+  unconfirmed: null,
+  history: []
 }
 
 // ------------------------------------
@@ -40,7 +41,8 @@ export function walletFail() {
 
 export const fetchWallet = () => async (dispatch) => {
   dispatch(requestWallet())
-  const data = await wallet(['address', 'confirmed', 'unconfirmed'])
+  const data = await wallet(['address', 'confirmed', 'unconfirmed', 'history'])
+  console.log('data: ', data)
   dispatch(walletSuccess(Object.assign(...data)))
 }
 
@@ -59,7 +61,8 @@ const WALLET_ACTION_HANDLERS = {
     error: null,
     address: action.data.address,
     confirmed: action.data.confirmed,
-    unconfirmed: action.data.unconfirmed
+    unconfirmed: action.data.unconfirmed,
+    history: action.data.history
   }),
   [WALLET_FAIL]: (state) => ({
     ...state,

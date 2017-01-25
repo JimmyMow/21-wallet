@@ -11,17 +11,17 @@ const Nav = ({ pathname }) => (
     </h1>
 
     <ul className={styles.links}>
-      <li className={`${styles.link}`}>
+      <li className={`${styles.link} ${pathname === '/' ? styles.active : null}`}>
         <Link to='/'>
           <FontAwesome name='home' />
         </Link>
-        <div className={`${pathname === '/' ? styles.active : null} ${styles.border}`} />
+        <div className={`${styles.border}`} />
       </li>
-      <li className={styles.link}>
+      <li className={`${styles.link} ${pathname === '/wallet' ? styles.active : null}`}>
         <Link to='wallet'>
           <FontAwesome name='btc' />
         </Link>
-        <div className={`${pathname === '/wallet' ? styles.active : null} ${styles.border}`} />
+        <div className={`${styles.border}`} />
       </li>
     </ul>
   </div>
